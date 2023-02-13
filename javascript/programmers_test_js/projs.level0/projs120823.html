@@ -1,0 +1,31 @@
+<script>
+  //직각삼각형 출력하기
+
+  //문제:"*"의 높이와 너비를 1이라고 했을 때, "*"을 이용해 직각 이등변 삼각형을 그리려고합니다.
+  //정수 n 이 주어지면 높이와 너비가 n 인 직각 이등변 삼각형을 출력하도록 코드를 작성해보세요.
+
+  //풀이:첫줄에 하나, 둘째줄에 둘, 셋째줄에 셋...n줄에 n개까지 * 추가 반복한 문자열 출력
+
+  const readline = require("readline");
+  const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout,
+  });
+
+  let input = [];
+
+  rl.on("line", function (line) {
+    input = line.split(" ");
+  }).on("close", function () {
+    let Star = ""; //문자열 생성
+    const num = Number(input[0]); //input값을 숫자화 한 변수 num 생성
+    for (let i = 0; i < num; i++) {
+      //num번만큼 반복
+      for (let j = 0; j <= i; j++) {
+        Star = Star + "*"; //num번만큼 문자열에 * 추가(i번째줄에 j번 추가)
+      }
+      Star = Star + "\n"; //줄바꿈
+    }
+    console.log(Star); //출력
+  });
+</script>
