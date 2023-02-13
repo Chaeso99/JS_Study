@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+</body>
+<script>
+ 
+    function questionFunc(callback) {
+        
+        // Math.random() 0~1 사이의 실수를 리턴
+        // Math.floor 내림 1.1 => 1
+        // toString() 타입을 string 타입으로 변경
+
+        var question = Math.floor(Math.random() * 1000).toString();
+        var answer = prompt(`${question}을 입력해주세요.`);
+
+        // switch 문은 case를 탔을 경우 break를 해주지 않으면 아래 case로 이동함
+        switch (answer){
+            
+            case question :
+
+                alert(`정확히 ${question}을 입력하셨습니다.`); 
+                callback();
+                break;
+
+            case "exit" :
+
+                alert(`질문을 종료합니다.`);
+                break;
+            
+            default :
+
+                alert(`잘못 입력하셨습니다.`);
+                callback();
+
+        }
+
+        
+
+    }
+
+    questionFunc(questionFunc);
+
+</script>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #first,
+      .second {
+        background-color: bisque;
+      }
+
+      div[class="third"] > p {
+        background-color: chartreuse;
+      }
+      div[class="fourth"] p {
+        background-color: cadetblue;
+      }
+    </style>
+  </head>
+  <body>
+    <p>p태그</p>
+    <div id="first">
+      <h6>첫째줄</h6>
+    </div>
+    <div class="second">
+      <h6>둘째줄</h6>
+    </div>
+    <div class="third">
+      <h6>셋째줄</h6>
+      <p>p태그</p>
+      <div>
+        <p>div 안의 p태그</p>
+      </div>
+    </div>
+    <div class="fourth">
+      <h6>넷째줄</h6>
+      <p>p태그</p>
+      <div>
+        <p>div 안의 p태그</p>
+      </div>
+    </div>
+  </body>
+</html>

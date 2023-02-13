@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+</body>
+<script>
+
+    // es8
+
+    // 1. 문자 앞뒤에 패딩
+        console.log("안녕".padStart(10));
+        console.log("안녕".padEnd(10));
+
+    // 2. key Value를 가진 객체에 대한 손쉬운 반복문
+        const meteor = {
+            p_name: "엄성문",
+            p_age: "99",
+            p_greeting : value => `안녕하세요. ${value || ""}${value == null ? "" : "님"}`
+        };
+
+        // 객체의 key를 통한 반복
+        Object.keys(meteor).forEach((key, index) => {
+            console.log(meteor[key]);
+        });
+
+        // 객체의 value를 통한 반복
+        Object.values(meteor).forEach((value) => {
+            console.log(value);
+        });
+
+        // 객체를  key 0, value 1의 2차원 배열로 변환
+        console.log(Object.entries(meteor));
+        console.log(Object.entries(meteor));
+
+    // 3. async, await - 생략
+    
+</script>
+</html>

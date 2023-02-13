@@ -1,0 +1,15 @@
+<script>
+  //짝수는 싫어요
+  //문제:정수 n이 매개변수로 주어질 때, n 이하의 홀수가 오름차순으로 담긴 배열을 return하도록 solution 함수를 완성해주세요.
+
+  //풀이:n이하니까 index < n+1 번째까지 홀수인지 검사, 홀수면 answer 배열에 push
+  function solution(n) {
+    var answer = [];
+    for (let index = 0; index < n + 1; index++) {
+      if (index % 2 == 1) {
+        answer.push(index);
+      }
+    }
+    return answer;
+  }
+</script>

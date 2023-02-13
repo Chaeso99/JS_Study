@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+
+function deepCopy(obj) {
+  if (obj === null || typeof obj !== "object") {
+    return obj;
+  }
+
+  let copy = {};
+  for (let key in obj) {
+    copy[key] = deepCopy(obj[key]);
+  }
+  return copy;
+}
+
+    const temp = {
+        a : {
+            a1: {
+                a2: "asdf"
+            }
+        }
+    };
+
+    const temp1 = deepCopy(temp);
+
+
+    console.log(temp === temp1);
+    console.log(temp.a === temp1.a);
+
+
+</script>
+</html>

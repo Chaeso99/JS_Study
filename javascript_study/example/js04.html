@@ -1,0 +1,12 @@
+<script>
+  //기본적으로 const 사용
+  //값을 변경해야하면 const->let으로 변경
+  //함수 스코프를 사용해야하면 let->var로 변경(주의) var로 변경할 일은 거의 없음
+  let result = false; //const를 let으로 변경하면 에러 안남.
+  result = confirm("확인해주세요.");
+  if (result) {
+    alert("확인");
+  } else {
+    alert("취소");
+  }
+</script>

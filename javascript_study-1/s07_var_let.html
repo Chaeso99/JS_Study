@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    // var의 특징과 문제점
+
+    // 1. var로 선언할 경우 다시 한 번 var로 같은 변수명으로 선언이 가능하다
+    // 코드가 길어지면 이전에 선언했던 변수명과 중복이 되어 문제가 발생할 가능성이 있다
+    var temp1 = 1;
+    var temp1 = 2;
+
+    console.log(temp1); //결과:2
+
+    // 2. var의 스코프 범위가 함수 단위라 블록 단위에서 생성한 변수도 바깥에서 확인이 가능하다
+    // 지역 변수 사용에 문제가 발생할 수 있다.
+    if (true) {
+      var temp2 = 3;
+      let temp3 = 3;
+    }
+
+    // 에러가 발생하지 않는다 결과:3
+    console.log(temp2);
+
+    // 에러가 발생한다 temp3 is not defined
+    console.log(temp3);
+  </script>
+</html>

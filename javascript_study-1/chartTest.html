@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="chart1"></div>
+  </body>
+  <script
+    type="text/javascript"
+    src="https://www.gstatic.com/charts/loader.js"
+  ></script>
+  <script>
+    google.charts.load("current", { packages: ["corechart"] });
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+      const serverData = {
+        aa: [
+          {
+            date: "2021-12-29",
+            price: 100000,
+          },
+          {
+            date: "2021-12-30",
+            price: 100000,
+          },
+          {
+            date: "2021-12-31",
+            price: 200000,
+          },
+          {
+            date: "2022-01-01",
+            price: 300000,
+          },
+          {
+            date: "2022-01-02",
+            price: 200000,
+          },
+          {
+            date: "2022-02-01",
+            price: 400000,
+          },
+          {
+            date: "2022-02-02",
+            price: 200000,
+          },
+        ],
+      };
+
+      const newRows = [];
+
+      serverData.aa.forEach((currentElement) => {
+        newRows.push([currentElement.date, currentElement.price]);
+      });
+
+      // serverData.aa.forEach((currentElement, index, array) => {
+      //   if (index == 0) {
+      //     const nowDate = new Date(currentElement.date);
+      //     newRows.push([
+      //       `${nowDate.getFullYear()}/${
+      //         nowDate.getMonth() + 1
+      //       }/${nowDate.getDate()}`,
+      //       currentElement.price,
+      //     ]);
+      //   } else {
+      //     const prevDate = new Date(array[index - 1].date);
+      //     const nowDate = new Date(currentElement.date);
+      //     if (prevDate.getMonth() == nowDate.getMonth()) {
+      //       newRows.push([`${nowDate.getDate()}`, currentElement.price]);
+      //     } else {
+      //       if (prevDate.getFullYear() == nowDate.getFullYear()) {
+      //         newRows.push([
+      //           `${nowDate.getMonth() + 1}/${nowDate.getDate()}`,
+      //           currentElement.price,
+      //         ]);
+      //       } else {
+      //         newRows.push([
+      //           `${nowDate.getFullYear()}/${
+      //             nowDate.getMonth() + 1
+      //           }/${nowDate.getDate()}`,
+      //           currentElement.price,
+      //         ]);
+      //       }
+      //     }
+      //   }
+      // });
+
+      let data = new google.visualization.DataTable();
+      data.addColumn("string", "날짜");
+      data.addColumn("number", "매출액");
+
+      data.addRows(newRows);
+
+      //   data.addRows([
+      //     ["2021-12-30", 100000],
+      //     ["2021-12-31", 200000],
+      //     ["2022-01-01", 300000],
+      //     ["2022-01-02", 200000],
+      //     ["2022-02-01", 400000],
+      //   ]);
+
+      let options = {
+        title: "김봉봉의 델리만쥬",
+        width: 600,
+        height: 400,
+      };
+
+      var chart = new google.visualization.ColumnChart(
+        document.getElementById("chart1")
+      );
+      chart.draw(data, options);
+    }
+  </script>
+</html>

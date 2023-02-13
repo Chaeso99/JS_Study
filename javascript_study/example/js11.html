@@ -1,0 +1,43 @@
+<script>
+  //setTimeout() <-시간 딜레이 첫 매개변수로 들어가는 함수를 두번째 매개변수 시간(밀리초 단위) 후에 실행
+  //   console.log(Date.now());
+  //   setTimeout(() => {
+  //     console.log("안녕");
+  //     console.log(Date.now());
+  //   }, 2000);
+
+  //setInterval() <-자동반복
+  //   const myInter = setInterval(() => {
+  //     console.log(Date.now());
+  //   }, 2000);
+
+  //   setTimeout(() => {
+  //     clearInterval(myInter);
+  //   }, 10000);
+
+  //promise  보통 통신할때 사용(이미지나 데이터 가져오는것 등. 특히 용량이 클 때) 또는 입출력
+  //마법택배상자-값이 들어오기 전까지 안열림, 값이 들어오면 열 수 있음
+  //매개변수로 executor(resolve, reject)를 넣어줘야함
+  //resolve(성공시)나 reject(실패시)가 실행됨(둘중하나)
+  const promise = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve("택배도착");
+      //reject("택배분실");
+    }, 2000);
+  });
+  promise
+    .then((response) => {
+      console.log(response); //택배도착 출력(resolve문 실행)
+      return "택배개봉";
+    })
+    .then((response) => {
+      console.log(response); //택배개봉 출력
+      //then의 return값도 promise라서 then을 여러번 이을수 있음
+    })
+    .catch((error) => {
+      console.log(error); //택배분실 출력(reject문 실행)
+    })
+    .finally(() => {
+      console.log("finally"); //finally 출력. 통신이 성공하든 실패하든 작동함
+    });
+</script>

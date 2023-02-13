@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+</body>
+<script>
+
+    var now = 0;
+    var limit = 10;
+
+    while(now < limit){
+
+        console.log(`(while)현재 숫자는 ${now}`);
+        now++; // now = now + 1 과 같음
+
+    }
+
+    // now 변수에 다시 대입
+    now = 0;
+
+    // do while 문은 내부 로직이  최소한 1번은 작동해야 될 경우 사용
+    do{
+
+        console.log(`(do_while)현재 숫자는 ${now}`);
+        now++;
+
+    } while(now < limit);
+
+
+</script>
+</html>

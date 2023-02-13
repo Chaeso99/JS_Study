@@ -1,0 +1,176 @@
+<script>
+  //number
+  const num = 1.123456789;
+
+  console.log(`${num} toFixed: ${num.toFixed(5)}`); //소수점 자리 수를 설정하는 함수. 분홍색 괄호 안이 소수점 자리수다.(주로 반올림할때 사용)
+  console.log(`${num} toString: ${num.toString()}`); //문자열로 바꿔주는 함수
+  console.log(typeof num); //숫자의 타입을 보고싶을때 사용. number형임
+  console.log(typeof num.toString()); //String형임
+  //if(typeof num == "number")
+
+  //string
+  const str1 = new String("ABcd");
+  const str = "ABcd"; //문자(char)의 배열(기계는 한글자씩밖에 인식을 못하므로 단어 등은 배열으로 저장해서 인식함)
+
+  console.log(`${str} charAt(1): ${str.charAt(1)}`); //char 는 캐릭터 라는뜻. ()번째의 한글자만 출력해줌
+  console.log(`${str} concat("e"): ${str.concat("e")}`); //문자열끼리 더하는 함수
+  console.log(`${str} endsWith("D"): ${str.endsWith("D")}`); //()안의 문자로 끝나는지 확인하는 함수. 결과값은 true 또는 false
+  console.log(`${str} startsWith("A"): ${str.startsWith("A")}`); //()안의 문자로 시작하는지 확인하는 함수. 결과값은 true 또는 false
+  console.log(`${str} includes("cd"): ${str.includes("cd", 2)}`);
+  //()안의 문자를 포함하는지 확인하는 함수. 결과값은 true 또는 false, 두번째 매개변수로 숫자가 들어가면 몇 번째 글자부터(0번부터시작) 이 글자를 찾을지 설정
+  console.log(`${str} indexOf("A"): ${str.indexOf("A")}`); //()안의 문자가 몇번째(0번부터시작)에 있는지 확인하는 함수. 없는 글자를 넣으면 -1이 나온다.
+  console.log(`${str} length: ${str.length}`); //함수가 아니고 프로퍼티임. 글자의 길이 찾아줌
+  console.log(`${str} padStart(6): ${str.padStart(6, "안녕")}`);
+  // 괄호안의 첫번째 매개변수만큼 두번째 매개변수로 채우는 함수. 두번째 매개변수가 없으면 공백을 채움
+  // 원래 이미 4글자라서 안의 숫자가 4이하면 반응없음
+  // padStart() 메서드는 현재 문자열의 시작을 다른 문자열로 채워, 주어진 길이를 만족하는 새로운 문자열을 반환합니다.
+  // 채워넣기는 대상 문자열의 시작(좌측)부터 적용됩니다.
+  console.log(`${str} repeat(3): ${str.repeat(3)}`); //()번 반복하는 함수
+  console.log(`${str} replace("cd", "ef"): ${str.replace("cd", "ef")}`);
+  //첫번째 매개변수 안의 글자를 두번째 매개변수 안의 글자로 변경하는 함수. 두번째""안에 아무것도 안적으면 첫번째 매개변수 글자가 지워짐
+  console.log(`${str} slice(1, 3): ${str.slice(1, 3)}`);
+  //첫번째 매개변수 번째 글자부터 두번째 매개변수 번째 글자만 남기고 다 자르는 함수
+  console.log(`${str} slice(1, 3): ${str.slice(str.indexOf("B"), 3)}`);
+  //글자 B가 들어있는곳 부터 선택할때 버전
+  console.log(`${str} split(""): ${str.split("")}`);
+  //()안의 글자로 구분해서 나눔
+  console.log("나는 학교에 갑니다.".split(" "));
+  //띄어쓰기로 구분
+  console.log(`${str} substring(1): ${str.substring(1)}`);
+  //Slice랑 같은역할.(시작, 끝)번째 글자 잘라냄
+  console.log(`${str} toLowerCase(): ${str.toLowerCase()}`);
+  //대문자를 소문자로
+  console.log(`${str} toUpperCase(): ${str.toUpperCase()}`);
+  //소문자를 대문자로
+  //toLowerCase, toUpperCase는 검색이나 ID 입력등에 사용한다.
+  console.log(`${str} trim(): ${"  abcd  ".trim()}`);
+  //양쪽 끝 공백 삭제하는 함수
+
+  //array
+  const arr = ["A", "B", "c", "d"];
+
+  console.log(`${arr} concat("e", "f"): ${arr.concat("e", "f")}`);
+  console.log(`${arr} concat(["g"]): ${arr.concat(["g"])}`);
+  //아이템 여러개를 받아서 string 배열 리턴. 배열 자체를 받을수도 있음
+  // console.log(`${arr} fill("a"): ${arr.fill("a", 0, 2)}`);
+  // //첫번째 매개변수의 값으로 두번째 매개변수 부터 세번째 매개변수까지 채우는 함수
+  // console.log(
+  //   [
+  //     ["a", "b"],
+  //     ["c", "d"],
+  //   ].flat()
+  // );
+  // console.log(`${arr} copyWithin(1, 2): ${arr.copyWithin(1, 2, 4)}`); //자주 사용하지는 않음
+  // //배열의 일부를 얕게 복사해서 그 배열의 다른곳에 덮어쓰는 함수. 첫 매개변수는 복사한 값을 넣을 위치
+  // //두번째 매개변수는 복사를 시작할 위치, 세번째 매개변수는 복사를 끝낼 위치
+  // //고차원 배열을 저차원으로 만듬
+  // console.log(`${arr} pop(): ${arr.pop()}`);
+  // //마지막 번호를 빼내는 역할
+  console.log(`${arr} push(g): ${arr.push("g")}`);
+  //배열에 값을 넣었는데 리턴되는 값이 5인 이유:항목이 5개라는뜻. 원본 배열이 변경됨(원본을 안바꾸고 새로운 배열 쓰려면 concat)
+  console.log(`${arr} join(""): ${arr.join("")}`);
+  console.log(`${arr} join(" "): ${arr.join(" ")}`);
+  console.log(`${arr} join("!"): ${arr.join("!")}`);
+  //배열을 하나로 합치는 함수. 매개변수를 구분선으로 사용
+  // console.log(`${arr} shift(): ${arr.shift()}`);
+  // //배열의 맨 앞에서 한글자를 빼내고 빼낸 글자 반환. unshift()는 배열의 맨 앞쪽에 새로운 요소 추가
+  console.log(`${arr} reverse(): ${arr.reverse()}`);
+  //배열 뒤집기
+
+  //ForEach, Filter, map, reduce, every, Find, some
+  // forEach -> 반복작업
+  const callbackFn = (value) => {
+    console.log(value);
+  };
+
+  arr.forEach(callbackFn);
+  arr.forEach((value) => console.log(value));
+
+  // filter -> 조건 필터링해서 배열 반환
+  const predicate1 = (value) => {
+    return value.charCodeAt(0) > 97;
+  };
+
+  console.log(arr.filter(predicate1));
+  console.log(arr.filter((value) => value == "g"));
+
+  // map -> 배열의 요소를 변환
+  console.log(arr.map((value) => value));
+
+  //reduce-> 요소 합치기(값을 4개 받음)
+  const array1 = [1, 2, 3, 4];
+  const initVal = 0;
+  const sum = array1.reduce(
+    (accumulrator, currentValue) => accumulrator + currentValue,
+    initVal
+  );
+
+  console.log(sum);
+
+  //every-> 모든 요소가 조건에 부합하는지 검사
+  const isBelowThreshold = (currentValue) => currentValue < 40;
+  const arrayev = [1, 30, 39, 29, 10, 13];
+
+  console.log(arrayev.every(isBelowThreshold));
+
+  //some->하나의 요소라도 조건에 부합하는지 검사(배열 변경 안함)
+  const arrayse = [1, 2, 3, 4, 5];
+  const even = (element) => element % 2 === 0;
+
+  console.log(arrayse.some(even));
+
+  //Find->조건에 부합하는 첫번째 요소 반환, 해당하는 요소가 없으면 undefined 반환
+  const arrayFd = [5, 12, 8, 130, 44];
+  const found = arrayFd.find((element) => element > 10);
+
+  console.log(found);
+
+  // //공백은 false와 마찬가지임
+  // if (prompt("아이디를 입력하세요")) {
+  //   console.log("조건성공");
+  // } else {
+  //   alert("아이디를 입력하세요");
+  // }
+
+  //obj
+  //아래는 클래스가 없는 그냥 객체(붕어빵틀 없는 수제 붕어빵)
+  const 시청 = {
+    //시청역
+    key: "value",
+    //func: (value) => value, // value를 파라미터로 받아서 value를 리턴, 프로퍼티임
+    func(value) {
+      return value;
+    }, //객체 안의 함수는 이런식으로 만들기(메소드임)
+    array: [1, 2, 3, 4], //객체 안의 배열
+    시청: { key: "value1" }, //객체 안의 객체(시청역 안의 시청건물)
+  };
+  console.log(시청.key);
+  console.log(시청.시청.key);
+  console.log(시청.func());
+
+  //Math: 수학 계산할때 사용
+  console.log(`Math.PI ${Math.PI}`); //원주율값, 대문자로 되어있으므로 상수임
+  console.log(`Math.abs(-11): ${Math.abs(-11)}`); //절댓값
+  console.log(`Math.ceil(1.2): ${Math.ceil(1.2)}`); //절댓값
+  console.log(`Math.floor(1.5): ${Math.floor(1.5)}`); //내림
+  console.log(`Math.round(1.5): ${Math.round(1.5)}`); //반올림
+  console.log(`Math.round(1.2): ${Math.round(1.2)}`); //반올림
+  console.log(`Math.pow(2, 3): ${Math.pow(2, 3)}`); //2의 3승
+  console.log(`Math.max(1, 2, 3): ${Math.max(1, 2, 3)}`); //안의 숫자들 중에서 제일 큰 값.
+  console.log(`Math.max[1, 2, 3]: ${Math.max(...[1, 2, 3])}`); //배열도 들어감. NaN은 Not a number 라는뜻. 배열앞에 ... 붙이면 해결됨
+  console.log(`Math.min(1, 2, 3): ${Math.min(1, 2, 3)}`); //안의 숫자들 중에서 제일 작은 값.
+  console.log(`Math.min[1, 2, 3]: ${Math.min(...[1, 2, 3])}`); //배열도 들어감. NaN은 Not a number 라는뜻. 배열앞에 ... 붙이면 해결됨
+  console.log(`Math.random(): ${Math.random()}`); //0~1사이의 랜덤값
+  console.log(`Math.random(소수점 삭제): ${Math.floor(Math.random() * 10)}`); //소수점 삭제한 1~10사이 랜덤값
+
+  //Date:날짜 관련
+  console.log(`Date.now(): ${Date.now()}`); //1970년 1월 1일 12시 정각부터 1000분의 1초 단위로<-(10자리일경우) 시간을 계산한 결과값 리턴
+  const myDate = new Date("2020-11-10 00:12:34");
+  console.log(`myDate: ${myDate}`); //클래스가 가지고있는 메서드를 클래스메서드라고 하고 myDate가 가진 메서드를
+  //메서드 또는 인스턴스 메서드라 함
+  console.log(`myDate.getFullYear(): ${myDate.getFullYear()}`); //2020년
+  console.log(`myDate.getMonth(): ${myDate.getMonth()}`); //월은 0부터 시작함(1월이 0, 11월은 10, 12월은 11)
+  console.log(`myDate.getDate(): ${myDate.getDate()}`); //10일
+  console.log(`myDate.getDay(): ${myDate.getDay()}`); // 일요일이 0, 월요일이 1, 화요일이 2 ...
+  console.log(`myDate.toJSON(): ${myDate.toJSON()}`); // JSON에서의 날짜 표기
+</script>

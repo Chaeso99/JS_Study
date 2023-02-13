@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <canvas id="myCanvas"> </canvas>
+  </body>
+  <script>
+    let circleX = 50;
+    let circleY = 50;
+    let rightKeyPressed = false;
+
+    //그림판
+    /** @type {HTMLCanvasElement} */
+    const myCanvas = document.getElementById("myCanvas");
+    myCanvas.width = 500;
+    myCanvas.height = 300;
+    myCanvas.style.backgroundColor = "gray";
+
+    //그림 그리는 역할
+    /** @type {CanvasRenderingContext2D} */
+    const context = myCanvas.getContext("2d");
+
+    const draw = () => {
+      //계속 실행되면서 조건 검사, 다시 그리기 수행
+
+      //오른쪽 방향키 눌려있는지 검사해서 눌려있으면 circleX값 증가
+      if (rightKeyPressed == true) {
+        circleX = circleX + 5;
+      }
+      context.clearRect(0, 0, myCanvas.width, myCanvas.height);
+      //도형 그리기 시작
+      context.beginPath();
+      //동그라미 그리기
+      context.arc(circleX, circleY, 10, 0, 2 * Math.PI);
+      //색깔 채우기
+      context.fillStyle = "blue";
+      //그리기 완료
+      context.fill();
+    };
+
+    //오른쪽 방향키를 누르면 true, 떼면 false가 됨
+    document.onkeydown = (event) => {
+      if (event.keyCode == 39) {
+        rightKeyPressed = true;
+      }
+    };
+
+    document.onkeyup = (event) => {
+      if (event.keyCode == 39) {
+        rightKeyPressed = false;
+      }
+    };
+
+    // //키보드를 눌렀다 뗄 때 이벤트 발생
+    // document.onkeyup = (event) => {
+    //   console.log(event);
+    //   if (event.keyCode == 37) {
+    //     //왼쪽에 그리기
+    //     circleX = circleX - 25;
+    //   } else if (event.keyCode == 39) {
+    //     //오른쪽에 그리기
+    //     circleX = circleX + 25;
+    //   } else if (event.keyCode == 38) {
+    //     context.fill();
+    //     //위쪽에 그리기
+    //     circleY = circleY - 25;
+    //   } else if (event.keyCode == 40) {
+    //     //아래에 그리기
+    //     circleY = circleY + 25;
+    //   }
+    // };
+
+    setInterval(draw, 100);
+  </script>
+</html>

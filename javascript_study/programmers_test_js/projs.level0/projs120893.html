@@ -1,0 +1,38 @@
+<script>
+  //대문자와 소문자
+
+  //문제:문자열 my_string이 매개변수로 주어질 때, 대문자는 소문자로 소문자는 대문자로
+  //변환한 문자열을 return하도록 solution 함수를 완성해주세요.
+
+  //풀이:1.한글자씩 쪼개서 새로운 배열에 넣기
+  //2.소문자는 대문자, 대문자는 소문자로 변환(글자 유니코드값 이용, 조건검사)
+  //3.쪼개놓은 단어 합치기
+  //영어 대문자 Z 키코드:90/영어 소문자 a 키코드:97
+
+  function solution(my_string) {
+    const split = my_string.split(""); //한글자씩 쪼개기
+    const resultArr = []; //쪼갠 글자들 저장할 배열 생성
+    for (const elem of split) {
+      //한글자씩 자른 원소들 검사
+      if (elem.charCodeAt(0) < 97) {
+        resultArr.push(elem.toLowerCase()); //대문자일 경우 소문자로 변경해 배열에 저장
+      } else {
+        resultArr.push(elem.toUpperCase()); //소문자일 경우 대문자로 변경해 배열에 저장
+      }
+    }
+    return resultArr.join(""); //배열의 모든 글자를 조합해 하나의 문자열로 만듬
+  }
+
+  //다른 풀이
+  function solution(my_string) {
+    let answer = "";
+    for (let i of my_string) {
+      if (i === i.toUpperCase()) {
+        answer += i.toLowerCase();
+      } else {
+        answer += i.toUpperCase();
+      }
+    }
+    return answer;
+  }
+</script>

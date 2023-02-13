@@ -1,0 +1,23 @@
+<script>
+  //피자 나눠 먹기(1)
+  //문제:머쓱이네 피자가게는 피자를 일곱 조각으로 잘라 줍니다. 피자를 나눠먹을 사람의 수 n이 주어질 때, 모든 사람이 피자를 한 조각 이상 먹기 위해
+  //필요한 피자의 수를 return 하는 solution 함수를 완성해보세요
+
+  function solution(n) {
+    var answer = 0; //필요한 피자 수
+    var pizza = 0; //남은 피자 조각 수
+    for (let index = 0; index < n; index++) {
+      if (pizza == 0) {
+        answer++;
+        pizza = 7;
+      } //사람이 왔는데 남은피자가 없으면 answer을 증가시키고 pizza 리필
+      pizza = pizza - 1; //사람이 피자를 먹음
+    }
+    return answer;
+  }
+
+  //Math.ceil(올림) 이용하면 간편하게 해결 가능
+  function solution(n) {
+    return Math.ceil(n / 7);
+  }
+</script>

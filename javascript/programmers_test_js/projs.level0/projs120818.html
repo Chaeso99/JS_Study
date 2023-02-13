@@ -1,0 +1,40 @@
+<script>
+  //옷가게 할인 받기
+
+  //문제:머쓱이네 옷가게는 10만 원 이상 사면 5%, 30만 원 이상 사면 10%,
+  //50만 원 이상 사면 20%를 할인해줍니다. 구매한 옷의 가격 price가 주어질 때,
+  //지불해야 할 금액을 return 하도록 solution 함수를 완성해보세요.
+
+  //풀이:구매금액 price가 얼마인지 검사->if 10만원<=price<30만원 이면 * 0.95,
+  //30만원<=price<50만원 이면 *0.9, 50만원<=price면 *0.8 return
+  //위의 경우에 모두 해당안되면 price 그대로 리턴
+
+  //자바스크립트에서는 양쪽으로 <, >, <= 등을 사용할때 && 연산자를 이용해서 적어야됨
+  //숫자<변수<숫자 식으로 하면 안됨!!
+  //숫자 < 변수 && 변수 < 숫자 식으로 나눠서 적어야된다.
+  //결과가 소수점 단위가 나오면 안되니까 Math.floor로 절삭
+
+  function solution(price) {
+    if (100000 <= price && price < 300000) {
+      //10만원 이상 30만원 미만
+      price = price * 0.95; //할인율 5% 적용
+    } else if (300000 <= price && price < 500000) {
+      price = price * 0.9; //할인율 10% 적용
+    } else if (500000 <= price) {
+      //50만원 이상
+      price = price * 0.8; //할인율 20% 적용
+    }
+    return Math.floor(price); //소수점 제거
+  }
+
+  function solution(price) {
+    if (price >= 500000) {
+      price = price * 0.8;
+    } else if (price >= 300000) {
+      price = price * 0.9;
+    } else if (price >= 100000) {
+      price = price * 0.95;
+    }
+    return Math.floor(price);
+  }
+</script>

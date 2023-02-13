@@ -1,0 +1,15 @@
+<script>
+  //중복된 숫자 개수
+  //문제:정수가 담긴 배열 array와 정수 n이 매개변수로 주어질 때, array에 n이 몇 개 있는 지를 return 하도록 solution 함수를 완성해보세요.
+  function solution(array, n) {
+    var answer = 0;
+    let count = 0; //개수를 셀 count 선언
+    for (let index = 0; index < array.length; index++) {
+      if (array[index] == n) {
+        count++;
+      } //array의 각 원소가 n과 일치하면 count 증가시킴
+      answer = count; //count값을 answer로 옮김
+    }
+    return answer;
+  }
+</script>

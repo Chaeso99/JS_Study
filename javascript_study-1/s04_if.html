@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+</body>
+<script>
+
+ 
+    function questionFunc(callback) {
+        
+        // Math.random() 0~1 사이의 실수를 리턴
+        // Math.floor 내림 1.1 => 1
+        // toString() 타입을 string 타입으로 변경
+        // alert, confirm, prompt 이용해보기
+
+        var question = Math.floor(Math.random() * 1000).toString();
+        var answer = prompt(`${question}을 입력해주세요.`);
+
+        if(answer === question){
+
+            alert(`정확히 ${question}을 입력하셨습니다.`);
+            callback();
+
+        } else if(answer === "exit"){
+
+            alert(`질문을 종료합니다.`);
+
+        } else {
+
+            alert(`잘못 입력하셨습니다.`);
+            callback();
+
+        }
+
+    }
+
+    questionFunc(questionFunc);
+
+</script>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <canvas id="myCanvas"> </canvas>
+  </body>
+  <script>
+    //그림판
+    /** @type {HTMLCanvasElement} */
+    const myCanvas = document.getElementById("myCanvas");
+    myCanvas.width = 500;
+    myCanvas.height = 300;
+    myCanvas.style.backgroundColor = "gray";
+
+    //그림 그리는 역할
+    /** @type {CanvasRenderingContext2D} */
+    const context = myCanvas.getContext("2d");
+
+    //도형 그리기 시작
+    context.beginPath();
+    //동그라미 그리기
+    context.arc(50, 50, 50, 0, 2 * Math.PI); //세번째 값 radius는 외곽선의 둥글기 정도/5번째값 PI는 x2를 안해주면 반달임
+    //색깔 채우기
+    context.fillStyle = "blue";
+    //그리기 완료
+    context.fill();
+
+    //사각형 그리기
+    context.fillStyle = "red";
+    context.fillRect(200, 50, 100, 50);
+
+    //글쓰기
+    context.fillStyle = "black";
+    context.font = "30px Arial";
+    context.fillText("Nine", 300, 50);
+
+    const image = new Image();
+    image.src = "./asset/img/mole.png";
+    image.onload = () => {
+      context.drawImage(image, 100, 100, 100, 100);
+    }; //gif 넣을수도 있음
+  </script>
+</html>

@@ -1,0 +1,22 @@
+<script>
+  //문자 반복 출력하기
+  //문제:문자열 my_string과 정수 n이 매개변수로 주어질 때, my_string에 들어있는 각 문자를
+  //n만큼 반복한 문자열을 return 하도록 solution 함수를 완성해보세요.
+
+  //풀이:my_string을 split 함수로 잘라서 mystr로 저장하고
+  //for문을 이용하여 각 글자를 n번만큼 repeat(반복)시켜 answer 문자열에 더한다.
+
+  function solution(my_string, n) {
+    var answer = "";
+    mystr = my_string.split("");
+    for (let index = 0; index < my_string.length; index++) {
+      answer = answer + mystr[index].repeat(n);
+    }
+    return answer;
+  }
+
+  // 다른 풀이
+  // function solution(my_string, n) {
+  //     return my_string.split('').map(str => str.repeat(n)).join('');
+  // }
+</script>

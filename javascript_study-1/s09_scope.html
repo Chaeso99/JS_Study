@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+</body>
+<script>
+
+    // 스코프는 변수의 가용 범위
+    // 아래 이미지를 참고
+    // https://media.vlpt.us/images/tok1324/post/c7cb749c-4eac-4912-84a0-8cf640ff4e61/img.png
+
+    // 글로벌 영역
+
+    // 1.미리 선언되어 있는 변수(window)
+    window.console; // console.log 등
+    window.alert; // alert confirm prompt 등
+    window.document; // document.get~ 등
+    window.location; // location.href 등
+
+
+    // 2.최상단 영역에 선언
+    let tempLet = 1;
+
+    console.log(`1.tempLet : ${tempLet}`); // 1
+
+    function scopeFunc() { // 함수 스코프
+
+        let tempLet = 2;
+        console.log(`2.tempLet : ${tempLet}`); // 2
+
+        if (true) { // 블록 스코프
+
+            let tempLet = 3;
+            console.log(`3.tempLet : ${tempLet}`); // 3
+
+        }
+
+        console.log(`4.tempLet : ${tempLet}`); // 2
+
+    }
+
+    scopeFunc();
+
+    console.log(`5.tempLet : ${tempLet}`); // 1
+
+</script>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="root">
+      <div id="header">헤더입니다.</div>
+      <div id="count">클릭수 0</div>
+      <button onclick="increase()">클릭</button>
+    </div>
+  </body>
+  <script>
+    let num = 0;
+
+    const increase = () => {
+      num = num + 1;
+      document.getElementById("count").innerHTML = `클릭수 ${num}`;
+    };
+  </script>
+</html>

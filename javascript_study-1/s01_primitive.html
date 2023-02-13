@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+</body>
+<script>
+
+    // https://ko.javascript.info
+
+    // 원시 데이터 타입
+
+    var num1 = 1;      // 숫자 (number)
+    var num2 = 1.2;    // 숫자 (number)
+    var str1 = "1";    // 문자열 (string)
+    var str2 = '1';    // 문자열
+    var bool1 = true;  // 참거짓 (boolean)
+    var bool2 = false; // 참거짓
+    var nu = null;     // 데이터 없음(null)
+    var undef1 = undefined; // 정의되지 않음 (undefined)
+    var undef2;
+
+    // === 표시는 데이터 타입과 데이터가 같은지 판별한다
+    // == 표시는 데이터가 같은지 판별 한다
+
+    // !==
+    // !=
+
+    // 데이터가 같기 때문에 true
+    window.console.log(`num == str1 : ${num1 == str1}`);
+
+    // 데이터는 같지만 타입이 다르기 때문에 false
+    console.log(`num === str1 : ${num1 === str1}`);
+
+    // 데이터가 같기 때문에 true의 반대 false
+    window.console.log(`num != str1 : ${num1 != str1}`);
+
+    // 데이터는 같지만 타입이 다르기 때문에 false 의 반대 true
+    console.log(`num !== str1 : ${num1 !== str1}`);
+
+    // 데이터가 같기 때문에 true (프로그래밍에서는 1 은 true / 0 은 false)
+    console.log(`num == bool1 : ${num1 == bool1}`);
+
+    // 데이터는 같지만 타입이 다르기 때문에 false
+    console.log(`num === bool1 : ${num1 === bool1}`);
+
+    // 자바스크립트에서 쌍따옴표와 홑따옴표는 차이가 없음 true
+    console.log(`str1 === str2 : ${str1 === str2}`);
+
+    // object (자바 : null)
+    console.log(`${typeof nu}`);
+
+    // 변수에 undefined를 입력해주거나 변수만 선언했을 경우 undefined 타입이 된다 true
+    console.log(`undef1 === undef2 : ${undef1 === undef2}`);
+
+    // null과 undefined는 데이터 상으로 같다고 판별한다 true
+    console.log(`nu == undef1 : ${nu == undef1}`);
+
+    // 타입이 다르기 때문에 false
+    console.log(`nu === undef1 : ${nu === undef1}`);
+
+    // 정수 나눗셈 2.5 (자바 : 2)
+    console.log(`5 / 2 : ${5 / 2}`);
+
+    // parseInt + 정수 나눗셈 2
+    console.log(`parseInt(5 / 2) : ${parseInt(5 / 2)}`);
+
+    // 정수 나머지 2
+    console.log(`10 % 4 : ${10 % 4}`);
+
+    // 실수 나눗셈 1.25 (자바 : 1.25)
+    console.log(`2.5 / 2 : ${2.5 / 2}`);
+
+    // 실수 나머지 3.0999999999999996 (자바 : 3.0999999999999996)
+    // 이진법에서는 십진수 소수가 정확히 표현되지 않는다
+    console.log(`11.1 % 4 : ${11.1 % 4}`);
+    
+
+</script>
+</html>

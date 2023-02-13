@@ -1,0 +1,24 @@
+<script>
+  //문제:영단어를 입력받아서 대문자는 소문자로, 소문자는 대문자로 변환하기.
+  //과정:1.영단어 입력받아서 배열에 저장 2.한글자씩 쪼개서 새로운 배열에 넣기
+  //3.소문자는 대문자, 대문자는 소문자로 변환(글자 유니코드값 이용, 조건검사)
+  //4.쪼개놓은 단어 합치기
+  //영어 대문자 Z 키코드:90/영어 소문자 a 키코드:97
+
+  const lowUpCase = (str) => {
+    /** @type {string[]} splited */
+    const splited = str.split(""); //한글자씩 쪼개기
+    const resultArr = []; //쪼갠 글자들 저장할 배열 생성
+    for (const elem of splited) {
+      //한글자씩 자른 원소들 검사
+      if (elem.charCodeAt(0) < 97) {
+        resultArr.push(elem.toLowerCase()); //대문자일경우 소문자로 변경해서 resultarr 배열에 저장
+      } else {
+        resultArr.push(elem.toUpperCase()); //소문자일경우 대문자로 변경해서 resultarr 배열에 저장
+      }
+    }
+    return resultArr.join(""); //배열의 모든 글자를 조합해 하나의 문자열로 만듬
+  };
+  var str = prompt("대소문자 변환", "영어를 입력해주세요"); //알람창을 띄워 메시지를 입력받음
+  document.write(lowUpCase(str)); //대소문자 변환 결과값을 화면에 출력
+</script>

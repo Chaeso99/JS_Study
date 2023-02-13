@@ -1,0 +1,53 @@
+<script>
+  //자릿수 더하기
+
+  //문제:정수 n이 매개변수로 주어질 때
+  //n의 각 자리 숫자의 합을 return하도록 solution 함수를 완성해주세요
+
+  //풀이:n의 몫이 0이 될때까지 n을 10으로 나눈 나머지가 끝자리수
+  //반복하면서 매 회차의 끝자리수 다 더하면 됨!
+
+  function solution(n) {
+    var answer = 0;
+    while (n / 10 != 0) {
+      console.log("현재 n: " + n);
+      console.log("현재 자리수 값: " + (n % 10));
+      answer = answer + (n % 10);
+      console.log("계산후 현재 값: " + answer);
+      n = Math.floor(n / 10);
+      console.log("----------------------");
+    }
+    return answer;
+  }
+
+  //다른 풀이
+  function solution(n) {
+    return n
+      .toString()
+      .split("")
+      .reduce((acc, cur) => acc + Number(cur), 0);
+    //0은 초기값, 필수아닌데 안적으면 acc등 계산값을 숫자가 아닌 다른 타입으로 인식할 수 있어서 적음
+  }
+
+  // 0을 안적으면 원래 cur로 시작, cur이 acc가 되고 acc + cur 하고 그 값이 다시 acc가 되고 cur
+  //더하고 ... 반복되는데 0이 들어가서 아래처럼 작동
+  // acc = 0 + cur
+  // acc = acc + cur
+  function solution(n) {
+    const nArr = n.toString().split("");
+
+    let result = 0;
+    for (let index = 0; index < nArr.length; index++) {
+      result = result + Number(nArr[index]);
+    }
+    return result;
+  }
+
+  // n이 1234로 주어지면 .toString()을 이용해서 문자열으로 바꾸고
+  //.split("")으로 자르고
+  //1 2 3 4가 배열에 각 원소로 있는데 원소 순서대로 더하기 연산이 들어가는것임
+  // acc = 1 + 2
+  // acc = 3 + 3  이전 acc가 3이니까 3+3
+  // acc = 6 + 4
+  // =>10이 결과로 나옴
+</script>

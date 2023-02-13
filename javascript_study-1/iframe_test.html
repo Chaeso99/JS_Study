@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button type="button" onclick="test()">asdf</button>
+  </body>
+  <script>
+    // var console = {
+    //   __on: {},
+    //   addEventListener: function (name, callback) {
+    //     this.__on[name] = (this.__on[name] || []).concat(callback);
+    //     return this;
+    //   },
+    //   dispatchEvent: function (name, value) {
+    //     this.__on[name] = this.__on[name] || [];
+    //     for (var i = 0, n = this.__on[name].length; i < n; i++) {
+    //       this.__on[name][i].call(this, value);
+    //     }
+    //     return this;
+    //   },
+    //   log: function () {
+    //     var a = [];
+    //     // For V8 optimization
+    //     for (var i = 0, n = arguments.length; i < n; i++) {
+    //       a.push(arguments[i]);
+    //     }
+    //     this.dispatchEvent("log", a);
+    //   },
+    // };
+
+    // console.oldLog = console.log;
+
+    // console.log = function (value) {
+    //   console.oldLog(value);
+    //   window.$log = value;
+    // };
+
+    // // Usage
+
+    
+    
+
+      // 1
+    console.log("JSON data");
+
+      // 2
+    window.parent.postMessage("JSON data", "*");
+  
+
+
+
+    window.onload = function () {
+      console.log("asdasd");
+    };
+
+    // window.onload = function () {
+    //   window.parent.postMessage({ childData: "test data" }, "*");
+    // };
+  </script>
+</html>

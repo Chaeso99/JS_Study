@@ -1,0 +1,17 @@
+<script>
+  //JSON이 아닌 객체
+  const family = {
+    aunt: ["c", "s"],
+  };
+
+  //   const test = {
+  //     "aunt": ["c", "s",]
+  //   };
+
+  //JSON: 객체를 문자로 만드는것. 통신데이터 항상 문자열로 처리함
+  //JSON의 필드가 될 수 있는 것-문자, 숫자, 불린, 객체? {}, 배열? []
+  const jsonFamily = JSON.stringify(family);
+  console.log(jsonFamily);
+  const family1 = JSON.parse(jsonFamily); //문자열로 온 JSON데이터를 다시 객체로 만듬
+  console.log(family1);
+</script>

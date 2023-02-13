@@ -1,0 +1,25 @@
+<script>
+  // 원시 데이터 타입
+  var num1 = 1; //숫자(number)
+  var num2 = 1.2; //숫자(number)
+  var str1 = "1"; //문자열(string) char없음. 무조건 string으로 적으면됨
+  var str2 = "1"; //문자열 작은따옴표인데 저장하면 자동완성때문에 큰따옴표로 바뀜
+  var bool1 = true; //참거짓(boolean)
+  var bool2 = false; //참거짓
+  var nu = null; //데이터 없음(null)
+  var undef1 = undefined; //정의되지 않음(undefined)<-선언만하고 초기화를 안해준것
+  var undef2;
+
+  //값만 비교
+  console.log(`숫자 == 문자열 테스트 : ${num1 == str1}`);
+
+  //값과 타입 비교
+  console.log(`숫자 === 문자열 테스트 : ${num1 === str1}`);
+
+  //숫자와 불린 비교(0 1 true false) //num1의 1과 bool2의 false는 값이 다름
+  console.log(`숫자 == 불린 테스트 : ${num1 == bool2}`);
+  //문자와 불린 비교("0", "1", true false) //str1의 1과 bool1의 true는 값이 같음
+  console.log(`문자 == 불린 테스트 : ${str1 == bool1}`);
+  //null과 undefined 비교 //null과 undef는 값이 같음
+  console.log(`null == undefined 테스트 : ${nu == undef1}`);
+</script>

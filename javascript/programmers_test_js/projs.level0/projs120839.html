@@ -1,0 +1,49 @@
+<script>
+  //가위 바위 보
+
+  //문제:가위는 2 바위는 0 보는 5로 표현합니다. 가위 바위 보를 내는 순서대로 나타낸 문자열
+  //rsp가 매개변수로 주어질 때, rsp에 저장된 가위 바위 보를 모두 이기는 경우를 순서대로 나타낸
+  //문자열을 return하도록 solution 함수를 완성해보세요.
+
+  //풀이:매개변수의 글자를 모두 자른후 반복문을 돌려 조건을 검사하고
+  //가위(2)면 바위(0), 바위(0)면 보(5), 보(5)면 가위(2)로 바꿔서 join시키고 리턴
+
+  function solution(rsp) {
+    var answer = "";
+    rsp = rsp.split("");
+    //console.log(rsp);
+    for (let i = 0; i < rsp.length; i++) {
+      if (rsp[i] == 2) {
+        rsp[i] = 0;
+      } else if (rsp[i] == 0) {
+        rsp[i] = 5;
+      } else if (rsp[i] == 5) {
+        rsp[i] = 2;
+      }
+    }
+    return rsp.join("");
+  }
+
+  //다른 풀이: .map()은 배열 내의 모든 요소 각각에 대해 주어진 함수를 호출한 결과를
+  //모아 새로운 배열을 반환하는 함수.
+  //1.삼항 연산자 사용: v에 대해 v가 2면 0, 아닌 경우중에서 v가 0이면 5 아니면 2
+  function solution(rsp) {
+    return rsp
+      .split("")
+      .map((v) => (v === "2" ? 0 : v === "0" ? 5 : 2))
+      .join("");
+  }
+
+  //2. arr배열을 만들어 가위는 바위, 바위는 보, 보는 가위로 대응시키고
+  //각 값에 대하여 arr에 값을 넣은 결과를 모아(join) 리턴.
+  //[...rsp] 에서 ...은 rsp의 주소값을 가져오지 않고 값만 가져온다는 의미임.
+  function solution(rsp) {
+    let arr = {
+      2: 0,
+      0: 5,
+      5: 2,
+    };
+    var answer = [...rsp].map((v) => arr[v]).join("");
+    return answer;
+  }
+</script>

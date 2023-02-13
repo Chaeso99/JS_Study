@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <canvas id="moleGame"> </canvas>
+  </body>
+  <script>
+    //두더지
+    class Mole {
+      constructor(game, index, x, y) {
+        this.idx = index;
+        this.x = x;
+        this.y = y;
+        this.attacked = false;
+
+        setTimeout(() => {
+          //두더지 사라짐
+          game.moleArray[this.idx] = null;
+          if (!this.attacked) {
+            //fail 점수 상승
+            game.fail = game.fail + 1;
+          }
+        }, 1500); //1,5초
+      }
+    }
+
+    //두더지 게임
+    class MoleGame {
+      //캔버스에 게임 생성(뿌려줌)
+      constructor(canvas) {
+        //게임 설정 데이터
+        this.gameWidth = 350;
+        this.gameHeight = 700;
+        this.gameLevel = 1;
+        this.genMole = 2; //두더지 생성 마리 수(한번에 2마리씩 생성)
+        this.moleArray = new Array(9).fill(null);
+        this.score = 0;
+        this.fail = 0;
+        this.moleInterval = null;
+        this.renderInterval = null;
+
+        //캔버스
+        /** @type {HTMLCanvasElement} */
+        this.canvas = canvas;
+        this.canvas.width = this.gameWidth;
+        this.canvas.height = this.gameHeight;
+
+        //컨텍스트
+        /** @type {CanvasRenderingContext2D} */
+        this.ctx = this.canvas.getContext("2d");
+
+        //배경 이미지
+        this.bgImage = new Image();
+        this.bgImage.src = "./asset/img/bg.jpg";
+
+        //두더지 이미지
+        this.moleImage = new Image();
+        this.moleImage.src = "./asset/img/mole_r.png";
+
+        //공격 이펙트 이미지
+        this.boomImage = new Image();
+        this.boomImage.src = "./asset/img/boom.png";
+
+        // 에셋 로딩 예시
+        // const imgArray = [this.bgImage, this.moleImage, this.boomImage];
+        // imgArray.length;
+        // imgArray.filter((value) => value.complete).length;
+
+        //공격-마우스 눌렀을때 적용/콘솔로그 기준 clientX,clientY가 마우스 위치임(인터넷 페이지의 공백때문에 정확하진 않음)
+        this.canvas.onmousedown = (event) => {
+          //공격당한 두더지가 있는지 모든 두더지 위치에 대해 검사
+          this.moleArray.forEach((mole) => {
+            //mole()이 null이 아니고/이미 공격당한 mole이 아니고/mole 이미지가 있는 범위 안이면
+            if (
+              mole != null &&
+              !mole.attacked &&
+              event.clientX > mole.x &&
+              event.clientX < mole.x + 85 &&
+              event.clientY > mole.y &&
+              event.clientY < mole.y + 96
+            ) {
+              mole.attacked = true;
+              this.score = this.score + 1;
+            }
+          });
+        };
+
+        //두더지 생성(객체 생성):게임레벨이 올라갈수록 두더지가 더 빨리 나옴
+        this.moleInterval = setInterval(() => {
+          //2마리 카운트
+          //랜덤위치 정해주기-0~8까지 나오게 랜덤값을 내림 계산
+          //생성해서 배열에 넣기
+          //9마리가 꽉 차면 생성 중단
+          let count = this.genMole;
+          while (count > 0) {
+            if (this.moleArray.some((mole) => mole == null)) {
+              const tempIndex = Math.floor(Math.random() * 9);
+              if (this.moleArray[tempIndex] == null) {
+                this.moleArray[tempIndex] = new Mole(
+                  this,
+                  tempIndex,
+                  (tempIndex % 3) * 107 + 20,
+                  Math.floor(tempIndex / 3) * 143 + 200
+                );
+                count = count - 1;
+              }
+            } else {
+              break;
+            }
+          }
+        }, 1000 / this.gameLevel);
+
+        //화면 그리기
+        this.render();
+      }
+      render() {
+        this.renderInterval = setInterval(() => {
+          //게임 종료 조건
+          if (this.fail > this.genMole * 2.5) {
+            this.over();
+          }
+
+          //화면 클리어
+          this.ctx.clearRect(0, 0, this.gameWidth, this.gameHeight);
+
+          //배경 그리기
+          this.ctx.drawImage(
+            this.bgImage,
+            0,
+            0,
+            this.gameWidth,
+            this.gameHeight
+          );
+
+          // 두더지 그리기- x축은 107, y축은 143간격
+          this.moleArray.forEach((mole) => {
+            if (mole == null) return;
+            this.ctx.drawImage(this.moleImage, mole.x, mole.y, 85, 96);
+            if (mole.attacked) {
+              this.ctx.drawImage(this.boomImage, mole.x, mole.y, 85, 96);
+            }
+          });
+
+          // 점수 / 실패
+          this.ctx.font = "30px Verdana";
+          this.ctx.fillText(`score:${this.score}`, 20, 30);
+          this.ctx.fillText(`fail:${this.fail}`, 180, 30);
+        }, 100);
+      }
+
+      over() {
+        // interval 멈추기
+        clearInterval(this.moleInterval);
+        clearInterval(this.renderInterval);
+        alert("게임오버");
+      }
+    }
+
+    alert("게임시작");
+
+    new MoleGame(document.getElementById("moleGame"));
+  </script>
+</html>

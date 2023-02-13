@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    // es10
+
+    // 1. Object.fromEntries , 배열 -> 객체 변환
+    // 2. Array.prototype.flat, Array.prototype.flatMap , 고차원 배열을 저차원 배열로 변환
+    // 3. String.prototype.trimStart, trimEnd, trimLeft, trimRight
+    // 4. Optional Catch
+
+    // es11 (2020 발표)
+
+    // 1. matchAll , 정규 표현식
+    // 2. BigInt , 매우 큰 숫자 표현
+    // 3. Promise.allSettled , 프로미스 중 일부만 성공해도 처리 되도록
+    // 4. globalThis
+    // 5. optional chaining , 옵셔널 체이닝
+
+    const a = {
+      b: {
+        c: "?",
+      },
+    };
+
+    // 이전 코드
+    console.log(a && a.b && a.b.c);
+
+    // 이전 코드
+    if (a) {
+      if (a.b) {
+        console.log(a.b.c);
+      }
+    }
+
+    // 옵셔널 체이닝
+    console.log(a?.b?.c);
+
+    // 6. nullish coalescing , 널 병합
+
+    console.log(null || undefined || false || 0 || "" || NaN || "안녕하세요1"); //or조건이 걸려있으면 false가 아닌걸 리턴- 결과:안녕하세요1
+
+    console.log(null ?? undefined ?? false ?? "안녕하세요2"); //null이랑 undefined만 거름 false도 값으로 생각함- 결과:false
+
+    const 부산시 = { key: "value" };
+    let temp;
+    if (Date.now() % 2 == 0) {
+      temp = 부산시;
+    } //밀리초 시간이 짝수면 통과, 홀수면 undefined가 되어서 아래 문장 출력
+    if (temp == undefined) {
+      console.log("temp에 문제가 있습니다");
+    } else {
+      console.log(temp.key);
+    } //es5
+
+    console.log(temp?.key); //?를 붙이면 예외처리를 알아서 해줌 위 코드들이랑 같은내용임
+  </script>
+</html>
